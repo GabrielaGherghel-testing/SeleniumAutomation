@@ -1,13 +1,12 @@
 package Tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
 import java.io.File;
+import java.util.List;
+
 
 public class PracticeFormTest {
 
@@ -63,12 +62,31 @@ public class PracticeFormTest {
 
 
       WebElement mobileNumberfield=driver.findElement(By.cssSelector("input[placeholder='Mobile Number']"));
-      String mobileNumberValue="076543276";
+      String mobileNumberValue="0765432762";
       mobileNumberfield.sendKeys(mobileNumberValue);
 
       WebElement pictureElement=driver.findElement(By.id("uploadPicture"));
       File file = new File("src/test/resources/1.png");
       pictureElement.sendKeys(file.getAbsolutePath());
+
+      WebElement SubjectsElement=driver.findElement(By.id("subjectsInput"));
+//      String SubjectsValue="Social Studies";
+//      SubjectsElement.sendKeys(SubjectsValue);
+//      SubjectsElement.sendKeys(Keys.ENTER);
+
+
+    SubjectsElement.sendKeys("a");
+    SubjectsElement.sendKeys(Keys.ENTER);
+
+    SubjectsElement.sendKeys("A");
+    SubjectsElement.sendKeys(Keys.ENTER);
+
+    SubjectsElement.sendKeys("b");
+    SubjectsElement.sendKeys(Keys.ENTER);
+
+    SubjectsElement.sendKeys("B");
+    SubjectsElement.sendKeys(Keys.ENTER);
+
 
   }
 }
