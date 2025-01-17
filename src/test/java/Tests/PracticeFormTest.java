@@ -50,13 +50,14 @@ public class PracticeFormTest {
 
       String genderValue="Female";
 
-      if (genderValue.equals("Male")){
+      if (malefield.getText().equals(genderValue))
+      {
           malefield.click();
       }
-      else if(genderValue.equals("Female")){
+      else if(femalefield.getText().equals(genderValue)){
           femalefield.click();
       }
-      else if(genderValue.equals("Other")){
+      else if(otherfield.getText().equals(genderValue)){
           otherfield.click();
       }
 
