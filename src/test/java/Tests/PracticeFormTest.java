@@ -43,6 +43,24 @@ public class PracticeFormTest {
       String userEmailValue="test@test.com";
       userEmailfield.sendKeys(userEmailValue);
 
+
+      WebElement malefield=driver.findElement(By.xpath("//label[@for='gender-radio-1']"));
+      WebElement femalefield=driver.findElement(By.xpath("//label[@for='gender-radio-2']"));
+      WebElement otherfield=driver.findElement(By.xpath("//label[@for='gender-radio-3']"));
+
+      String genderValue="Female";
+
+      if (genderValue.equals("Male")){
+          malefield.click();
+      }
+      else if(genderValue.equals("Female")){
+          femalefield.click();
+      }
+      else if(genderValue.equals("Other")){
+          otherfield.click();
+      }
+
+
       WebElement mobileNumberfield=driver.findElement(By.cssSelector("input[placeholder='Mobile Number']"));
       String mobileNumberValue="076543276";
       mobileNumberfield.sendKeys(mobileNumberValue);
@@ -50,10 +68,6 @@ public class PracticeFormTest {
       WebElement pictureElement=driver.findElement(By.id("uploadPicture"));
       File file = new File("src/test/resources/1.png");
       pictureElement.sendKeys(file.getAbsolutePath());
-
-
-      //WebElement genderfield=driver.findElement(By.id("gender-radio-1"));
-      //genderfield.click();
 
   }
 }
