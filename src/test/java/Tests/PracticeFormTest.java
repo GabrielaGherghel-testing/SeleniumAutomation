@@ -7,10 +7,9 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.util.List;
 
-
 public class PracticeFormTest {
 
-    public WebDriver driver;
+  public WebDriver driver;
 
   @Test
   public void automationMethod() {
@@ -24,68 +23,82 @@ public class PracticeFormTest {
     JavascriptExecutor js = (JavascriptExecutor) driver;
     js.executeScript("window.scrollBy(0, 1000)");
 
-      WebElement Formsfield=driver.findElement(By.xpath("//h5[text()='Forms']"));
-      Formsfield.click();
+    WebElement Formsfield = driver.findElement(By.xpath("//h5[text()='Forms']"));
+    Formsfield.click();
 
-      WebElement PracticeFormfield =driver.findElement(By.xpath("//span[text()='Practice Form']"));
-      PracticeFormfield.click();
+    WebElement PracticeFormfield = driver.findElement(By.xpath("//span[text()='Practice Form']"));
+    PracticeFormfield.click();
 
-      WebElement firstNamefield=driver.findElement(By.id("firstName"));
-      String firstNameValue="Gabriela";
-      firstNamefield.sendKeys(firstNameValue);
+    WebElement firstNamefield = driver.findElement(By.id("firstName"));
+    String firstNameValue = "Gabriela";
+    firstNamefield.sendKeys(firstNameValue);
 
-      WebElement lastNamefield=driver.findElement(By.id("lastName"));
-      String lastNameValue="Gherghel";
-      lastNamefield.sendKeys(lastNameValue);
+    WebElement lastNamefield = driver.findElement(By.id("lastName"));
+    String lastNameValue = "Gherghel";
+    lastNamefield.sendKeys(lastNameValue);
 
-      WebElement userEmailfield=driver.findElement(By.id("userEmail"));
-      String userEmailValue="test@test.com";
-      userEmailfield.sendKeys(userEmailValue);
+    WebElement userEmailfield = driver.findElement(By.id("userEmail"));
+    String userEmailValue = "test@test.com";
+    userEmailfield.sendKeys(userEmailValue);
 
+    WebElement malefield = driver.findElement(By.xpath("//label[@for='gender-radio-1']"));
+    WebElement femalefield = driver.findElement(By.xpath("//label[@for='gender-radio-2']"));
+    WebElement otherfield = driver.findElement(By.xpath("//label[@for='gender-radio-3']"));
 
-      WebElement malefield=driver.findElement(By.xpath("//label[@for='gender-radio-1']"));
-      WebElement femalefield=driver.findElement(By.xpath("//label[@for='gender-radio-2']"));
-      WebElement otherfield=driver.findElement(By.xpath("//label[@for='gender-radio-3']"));
+    String genderValue = "Female";
 
-      String genderValue="Female";
+    if (malefield.getText().equals(genderValue)) {
+      malefield.click();
+    } else if (femalefield.getText().equals(genderValue)) {
+      femalefield.click();
+    } else if (otherfield.getText().equals(genderValue)) {
+      otherfield.click();
+    }
 
-      if (malefield.getText().equals(genderValue))
-      {
-          malefield.click();
-      }
-      else if(femalefield.getText().equals(genderValue)){
-          femalefield.click();
-      }
-      else if(otherfield.getText().equals(genderValue)){
-          otherfield.click();
-      }
+    WebElement mobileNumberfield =
+        driver.findElement(By.cssSelector("input[placeholder='Mobile Number']"));
+    String mobileNumberValue = "0765432762";
+    mobileNumberfield.sendKeys(mobileNumberValue);
 
+    WebElement pictureElement = driver.findElement(By.id("uploadPicture"));
+    File file = new File("src/test/resources/1.png");
+    pictureElement.sendKeys(file.getAbsolutePath());
 
-      WebElement mobileNumberfield=driver.findElement(By.cssSelector("input[placeholder='Mobile Number']"));
-      String mobileNumberValue="0765432762";
-      mobileNumberfield.sendKeys(mobileNumberValue);
-
-      WebElement pictureElement=driver.findElement(By.id("uploadPicture"));
-      File file = new File("src/test/resources/1.png");
-      pictureElement.sendKeys(file.getAbsolutePath());
-
-      WebElement SubjectsElement=driver.findElement(By.id("subjectsInput"));
-//      String SubjectsValue="Social Studies";
-//      SubjectsElement.sendKeys(SubjectsValue);
-//      SubjectsElement.sendKeys(Keys.ENTER);
-
-
-    SubjectsElement.sendKeys("a");
+    WebElement SubjectsElement = driver.findElement(By.id("subjectsInput"));
+    String SubjectsValue="Social Studies";
+    SubjectsElement.sendKeys(SubjectsValue);
     SubjectsElement.sendKeys(Keys.ENTER);
 
-    SubjectsElement.sendKeys("A");
-    SubjectsElement.sendKeys(Keys.ENTER);
+//    SubjectsElement.sendKeys("a");
+//    SubjectsElement.sendKeys(Keys.ENTER);
+//
+//    SubjectsElement.sendKeys("A");
+//    SubjectsElement.sendKeys(Keys.ENTER);
+//
+//    SubjectsElement.sendKeys("b");
+//    SubjectsElement.sendKeys(Keys.ENTER);
+//
+//    SubjectsElement.sendKeys("B");
+//    SubjectsElement.sendKeys(Keys.ENTER);
+//
+//    SubjectsElement.sendKeys("s");
+//    SubjectsElement.sendKeys(Keys.ENTER);
+//
+//    SubjectsElement.sendKeys("S");
+//    SubjectsElement.sendKeys(Keys.ENTER);
 
-    SubjectsElement.sendKeys("b");
-    SubjectsElement.sendKeys(Keys.ENTER);
+    // driver.quit();
 
-    SubjectsElement.sendKeys("B");
-    SubjectsElement.sendKeys(Keys.ENTER);
+
+    WebElement StateElement = driver.findElement(By.id("react-select-3-input"));
+    js.executeScript("arguments[0].click();", StateElement);
+    StateElement.sendKeys("NCR");
+    StateElement.sendKeys(Keys.ENTER);
+
+    WebElement CityElement = driver.findElement(By.id("react-select-4-input"));
+    js.executeScript("arguments[0].click();", CityElement);
+    CityElement.sendKeys("Delhi");
+    CityElement.sendKeys(Keys.ENTER);
 
 
   }
